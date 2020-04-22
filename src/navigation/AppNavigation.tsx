@@ -31,7 +31,12 @@ export function RootStack() {
       <Stack.Screen
         name="Post"
         component={PostScreen}
-        options={{ title: 'My Post 666' }}
+        options={{
+          title: 'My Post 666',
+          headerStyle: {
+            backgroundColor: 'red'
+          }
+        }}
       />
     </Stack.Navigator>
   )
