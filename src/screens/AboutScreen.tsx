@@ -1,9 +1,9 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 
-export const AboutScreen = ({}) => {
+const AboutScreen = ({}) => {
   return (
-    <View>
+    <View style={styles.center}>
       <Text>About screeen</Text>
     </View>
   )
@@ -16,3 +16,5 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   }
 })
+
+export default AboutScreen

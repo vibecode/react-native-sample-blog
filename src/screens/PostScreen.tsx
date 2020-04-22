@@ -1,9 +1,9 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 
-export const PostScreen = ({}) => {
+const PostScreen = ({}) => {
   return (
-    <View>
+    <View style={styles.center}>
       <Text>Post screeen</Text>
     </View>
   )
@@ -12,8 +12,10 @@ export const PostScreen = ({}) => {
 const styles = StyleSheet.create({
   center: {
     flex: 1,
-    backgroundColor: '#000',
+    backgroundColor: '#fff',
     justifyContent: 'center',
     alignItems: 'center'
   }
 })
+
+export default PostScreen
