@@ -4,6 +4,8 @@ import { StackNavigationProp } from '@react-navigation/stack'
 import { RouteProp } from '@react-navigation/native'
 import { RootStackParamsList } from '../navigation/AppNavigation'
 import { DATA } from '../data'
+import { Post } from '../types/types'
+import PostCard from '../components/PostCard'
 
 type MainScreenNavigationProp = StackNavigationProp<RootStackParamsList, 'Main'>
 type MainScreenRouteProp = RouteProp<RootStackParamsList, 'Main'>
@@ -13,25 +15,13 @@ type Props = {
   navigation: MainScreenNavigationProp
 }
 
-type Post = {
-  id: number
-  img: string
-  text?: string
-  date: string
-  booked: boolean
-}
-
 const MainScreen: React.FC<Props> = ({ navigation }) => {
   const goToPost = () => {
     navigation.navigate('Post')
   }
 
   const renderItem = ({ item }: { item: Post }) => {
-    return (
-      <View>
-        <Text>{item.text}</Text>
-      </View>
-    )
+    return <PostCard post={item} />
   }
 
   return (
