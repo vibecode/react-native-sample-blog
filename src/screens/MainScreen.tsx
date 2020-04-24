@@ -16,12 +16,12 @@ type Props = {
 }
 
 const MainScreen: React.FC<Props> = ({ navigation }) => {
-  const goToPost = () => {
-    navigation.navigate('Post')
+  const handlePostOpen = (post: Post) => {
+    navigation.navigate('Post', { postId: post.id, date: post.date })
   }
 
   const renderItem = ({ item }: { item: Post }) => {
-    return <PostCard post={item} />
+    return <PostCard post={item} onOpen={handlePostOpen} />
   }
 
   return (

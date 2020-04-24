@@ -8,17 +8,27 @@ import {
 } from 'react-native'
 import { Post } from '../types/types'
 
-const PostCard: React.FC<{ post: Post }> = ({ post }) => {
+type Props = {
+  post: Post
+  onOpen: (a: Post) => void
+}
+
+const PostCard: React.FC<Props> = ({ post, onOpen }) => {
   return (
-    <View style={styles.post}>
-      <ImageBackground style={styles.image} source={{ uri: post.img }}>
-        <View style={styles.textWrap}>
-          <Text style={styles.title}>
-            {new Date(post.date).toLocaleDateString()}
-          </Text>
-        </View>
-      </ImageBackground>
-    </View>
+    <TouchableOpacity activeOpacity={0.7} onPress={() => onOpen(post)}>
+      <View style={styles.post}>
+        <ImageBackground
+          style={styles.image}
+          source={{ uri: post.img, cache: 'reload' }}
+        >
+          <View style={styles.textWrap}>
+            <Text style={styles.title}>
+              {new Date(post.date).toLocaleDateString()}
+            </Text>
+          </View>
+        </ImageBackground>
+      </View>
+    </TouchableOpacity>
   )
 }
 

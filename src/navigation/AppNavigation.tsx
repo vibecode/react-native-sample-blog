@@ -7,7 +7,7 @@ import { THEME } from '../theme'
 
 export type RootStackParamsList = {
   Main: undefined
-  Post: undefined
+  Post: { postId: number; date: string }
 }
 
 const Stack = createStackNavigator<RootStackParamsList>()
