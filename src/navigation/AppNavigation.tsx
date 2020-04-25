@@ -34,7 +34,7 @@ export function RootStack() {
         options={{
           title: 'My Post 666',
           headerStyle: {
-            backgroundColor: 'red'
+            backgroundColor: 'darkgrey'
           }
         }}
       />
