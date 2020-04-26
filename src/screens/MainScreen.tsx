@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Button, FlatList } from 'react-native'
 import { StackNavigationProp } from '@react-navigation/stack'
 import { RouteProp } from '@react-navigation/native'
 import { RootStackParamsList } from '../navigation/AppNavigation'
+
 import { DATA } from '../data'
 import { Post } from '../types/types'
 import PostCard from '../components/PostCard'
