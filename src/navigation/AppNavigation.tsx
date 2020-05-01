@@ -1,10 +1,10 @@
 import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-import { HeaderButtons, Item } from 'react-navigation-header-buttons'
 import MainScreen from '../screens/MainScreen'
 import PostScreen from '../screens/PostScreen'
 import AppHeaderIcon from '../components/AppHeaderIcon'
+import HeaderButton from '../components/HeaderButton'
 import { THEME } from '../theme'
 
 export type RootStackParamsList = {
@@ -20,9 +20,9 @@ export function RootStack() {
       initialRouteName="Main"
       screenOptions={{
         headerStyle: {
-          backgroundColor: THEME.HEADER_BG_COLOR
+          backgroundColor: THEME.HEADER_BG_COLOR,
         },
-        headerTintColor: THEME.HEADER_TINT_COLOR
+        headerTintColor: THEME.HEADER_TINT_COLOR,
       }}
     >
       <Stack.Screen
@@ -31,14 +31,19 @@ export function RootStack() {
         options={{
           title: 'My app',
           headerRight: () => (
-            <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
-              <Item
-                title="Take photo"
-                iconName="ios-camera"
-                onPress={() => null}
-              />
-            </HeaderButtons>
-          )
+            <HeaderButton
+              title="Toogle photo"
+              iconName="ios-camera"
+              onPress={() => null}
+            />
+          ),
+          headerLeft: () => (
+            <HeaderButton
+              title="Toogle drawer"
+              iconName="ios-menu"
+              onPress={() => null}
+            />
+          ),
         }}
       />
       <Stack.Screen
@@ -47,8 +52,8 @@ export function RootStack() {
         options={{
           title: 'My Post 666',
           headerStyle: {
-            backgroundColor: 'darkgrey'
-          }
+            backgroundColor: 'darkgrey',
+          },
         }}
       />
     </Stack.Navigator>

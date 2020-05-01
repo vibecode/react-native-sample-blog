@@ -6,13 +6,14 @@ import {
   StyleSheet,
   Button,
   ScrollView,
-  Alert
+  Alert,
 } from 'react-native'
 import { RouteProp } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
 import { RootStackParamsList } from '../navigation/AppNavigation'
 import { DATA } from '../data'
 import { THEME } from '../theme'
+import HeaderButton from '../components/HeaderButton'
 
 type MainScreenNavigationProp = StackNavigationProp<RootStackParamsList, 'Post'>
 type MainScreenRouteProp = RouteProp<RootStackParamsList, 'Post'>
@@ -25,11 +26,15 @@ type Props = {
 const PostScreen: React.FC<Props> = ({ route, navigation }) => {
   const { date, postId } = route.params
 
-  const post = DATA.find(p => p.id === postId)
+  const post = DATA.find((p) => p.id === postId)
+  const iconName = post?.booked ? 'ios-star' : 'ios-star-outline'
 
   useLayoutEffect(() => {
     navigation.setOptions({
-      title: 'Пост oт ' + new Date(date).toLocaleDateString()
+      title: 'Пост oт ' + new Date(date).toLocaleDateString(),
+      headerRight: () => (
+        <HeaderButton title="Booked" iconName={iconName} onPress={() => null} />
+      ),
     })
   })
 
@@ -41,13 +46,13 @@ const PostScreen: React.FC<Props> = ({ route, navigation }) => {
         {
           text: 'Cancel',
           style: 'cancel',
-          onPress: () => console.log('Cancel Pressed')
+          onPress: () => console.log('Cancel Pressed'),
         },
         {
           text: 'Delete',
           style: 'destructive',
-          onPress: () => console.log('OK Pressed')
-        }
+          onPress: () => console.log('OK Pressed'),
+        },
       ],
       { cancelable: false }
     )
@@ -72,14 +77,14 @@ const styles = StyleSheet.create({
   image: {
     flex: 1,
     width: '100%',
-    height: 200
+    height: 200,
   },
   textWrap: {
-    padding: 10
+    padding: 10,
   },
   title: {
-    fontFamily: 'open-regular'
-  }
+    fontFamily: 'open-regular',
+  },
 })
 
 export default PostScreen
